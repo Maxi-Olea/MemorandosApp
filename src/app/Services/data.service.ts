@@ -24,4 +24,8 @@ export class DataService {
   createUser(userData: User): Observable<Object> {
     return this.httpClient.post('api/v1/users', userData)
   }
+
+  login(userLogin: Object): Observable<Object> {
+    return this.httpClient.post('api/v1/login', userLogin)
+  }
 }
