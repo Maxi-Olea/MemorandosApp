@@ -1,1 +1,91 @@
-<p>register works!</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="text-center title">Registro de Usuario</h2>
+          <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="mb-3">
+              <input type="text" formControlName="surname" class="form-control form-control-lg" placeholder="Apellido">
+              <span class="text-danger"
+                *ngIf="registerForm.get('surname')?.hasError('required') && registerForm.get('surname')?.touched">
+                Este campo es <strong>obligatorio!</strong>
+              </span>
+            </div>
+            <div class="mb-3">
+              <input type="text" formControlName="name" class="form-control form-control-lg" placeholder="Nombre">
+              <span class="text-danger"
+                *ngIf="registerForm.get('name')?.hasError('required') && registerForm.get('name')?.touched">
+                Este campo es <strong>obligatorio!</strong>
+              </span>
+            </div>
+            <div class="mb-3">
+              <input type="email" formControlName="email" class="form-control form-control-lg" placeholder="E-mail de la Empresa">
+              <span class="text-danger"
+                *ngIf="registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched">
+                Este campo es <strong>obligatorio!</strong>
+              </span>
+              <span class="text-danger"
+                *ngIf="registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched">
+                Este formato de correo es <strong>invalido</strong>
+              </span>
+            </div>
+            <div class="mb-3">
+              <input type="text" formControlName="username" class="form-control form-control-lg" placeholder="Nombre de Usuario (min de 6 caracteres alfanuméricos)">
+              <span class="text-danger"
+                *ngIf="registerForm.get('username')?.hasError('required') && registerForm.get('username')?.touched">
+                Este campo es <strong>obligatorio!</strong>
+              </span>
+              <span class="text-danger"
+                *ngIf="registerForm.get('username')?.hasError('minlength') && registerForm.get('username')?.touched">
+                En nombre de usuario debe tener <strong>como mínimo 6 caracteres alfanuméricos</strong>
+              </span>
+            </div>
+            <div class="mb-3">
+              <input type="password" formControlName="password" class="form-control form-control-lg" placeholder="Contraseña">
+              <span class="text-danger"
+                *ngIf="registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched">
+                Este campo es <strong>obligatorio!</strong>
+              </span>
+              <span class="text-danger"
+                *ngIf="registerForm.get('password')?.hasError('minlength') && registerForm.get('password')?.touched">
+                La contraseña debe tener <strong>como mínimo 8 caracteres alfanuméricos</strong>
+              </span>
+            </div>
+            <div class="mb-3">
+              <input type="password" formControlName="cpassword" class="form-control form-control-lg" placeholder="Repetir Contraseña">
+              <span class="text-danger"
+                *ngIf="registerForm.hasError('notSame')">
+                Las contraseñas<strong>son distintas!</strong>
+              </span>
+            </div>
+            <div class="mb-3">
+              <select formControlName="country" class="form-select form-select-lg" (change)="fetchCities($event)">
+                <option [value]="null" disabled selected>Seleccione País</option>
+                <option [value]="country.idpais" *ngFor="let country of countries">{{ country.pais }}</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <select formControlName="city" class="form-select form-select-lg">
+                <option [value]="null" disabled selected>Seleccione una ciudad</option>
+                <option [value]="city.id" *ngFor="let city of cities">{{ city.ciudad }}</option>
+              </select>
+            </div>
+            <div class="d-grid gap-2-col-6 mx-auto">
+              <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary btn-lg">Registrarse</button>
+            </div>
+          </form>
+          <div *ngIf="loading" class="d-flex justify-content-center mt-3">
+            <app-spinner></app-spinner>
+          </div>
+          <div *ngIf="!loading" class="text-center">
+            <div class="mt-3">
+              <button routerLink="/" class="btn btn-secondary">Volver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

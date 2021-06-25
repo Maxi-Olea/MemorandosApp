@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  loading = false;
 
   constructor(private fb: FormBuilder) {
     this.loginForm = this.fb.group ({
@@ -22,6 +23,10 @@ export class LoginComponent implements OnInit {
 
   login() {
     console.log(this.loginForm)
+    this.loading = true
+    setTimeout(()=> {
+      this.loading = false
+    }, 5000)
   }
 
 }
