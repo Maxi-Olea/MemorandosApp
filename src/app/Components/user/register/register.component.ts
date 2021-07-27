@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/Models/User.model';
 import { DataService } from 'src/app/Services/data.service';
 
@@ -20,7 +22,10 @@ export class RegisterComponent implements OnInit {
   cities:any[] = []
 
 
-  constructor(private fb: FormBuilder, private dataService: DataService) {
+  constructor(private fb: FormBuilder,
+              private dataService: DataService,
+              private toastr: ToastrService,
+              private router: Router) {
     this.registerForm = this.fb.group ({
       surname: ['', [Validators.required]],
       name: ['', [Validators.required]],
@@ -37,6 +42,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getcountries().subscribe(data => {
       this.countries = data
+      this.toastr.success('Hello world!', 'Toastr fun!')
     })
   }
 
@@ -48,6 +54,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    this.loading = true
     console.log(this.registerForm)
     if(this.registerForm.status === 'VALID') {
       const user = this.registerForm.value
@@ -63,12 +70,13 @@ export class RegisterComponent implements OnInit {
       const userData:User = new User (name, lastName, email, userName, password, idPais, idCiudad)
       this.dataService.createUser(userData).subscribe(res => {
         console.log(res)
+        this.toastr.success(`El usuario "${res.userName}" para ${res.name} ${res.lastName} ha sido creado con exito!`, 'Usuario Creado!')
+        this.router.navigate(['./'])
       })
     }
     else {
       console.log("Formulario invalido")
     }
-    this.loading = true
     setTimeout(() => {
       this.loading = false
     }, 3000)

@@ -21,11 +21,17 @@ export class DataService {
     return this.httpClient.get(`/api/v1/cities/bycountry/${countryId}`)
   }
 
-  createUser(userData: User): Observable<Object> {
+  createUser(userData: User): Observable<any> {
     return this.httpClient.post('api/v1/users', userData)
   }
 
-  login(userLogin: Object): Observable<Object> {
+  login(userLogin: Object): Observable<any> {
     return this.httpClient.post('api/v1/login', userLogin)
   }
+
+  updatePassword(userName: string, userData: Object): Observable<Object> {
+    console.log(`api/v1/users/${userName.toLowerCase()}`)
+    return this.httpClient.patch(`api/v1/users/${userName.toLowerCase()}`, userData)
+  }
+
 }

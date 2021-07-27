@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { DataService } from 'src/app/Services/data.service';
 
 @Component({
@@ -12,7 +14,10 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
 
-  constructor(private fb: FormBuilder, private dataservice: DataService) {
+  constructor(private fb: FormBuilder,
+              private dataservice: DataService,
+              private toastr: ToastrService,
+              private router: Router) {
     this.loginForm = this.fb.group ({
       userName: ['', [Validators.required]],
       password: ['', [Validators.required]]
@@ -30,6 +35,17 @@ export class LoginComponent implements OnInit {
       console.log(userLogin)
       this.dataservice.login(userLogin).subscribe(res => {
         console.log(res)
+        const token = res.token
+        console.log("Imprmiendo el token: ", token)
+        if(token) {
+          this.router.navigate(['/dashboard'])
+        }
+      },
+      e => {
+        console.log(e)
+        const error = e.error
+        console.log("Error: ", error.message)
+        this.toastr.error('El usuario y/o la contraseña ingresados no son válidos', 'Fallo en la Autenticación!')
       })
     }
     else {
