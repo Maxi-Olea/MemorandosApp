@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
               private toastr: ToastrService,
               private router: Router) {
     this.loginForm = this.fb.group ({
-      userName: ['', [Validators.required]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required]]
     })
   }
@@ -36,8 +36,12 @@ export class LoginComponent implements OnInit {
       this.dataservice.login(userLogin).subscribe(res => {
         console.log(res)
         const token = res.token
+        const userId = res.id
         console.log("Imprmiendo el token: ", token)
+        console.log("Imprimiendo el userId: ", userId)
         if(token) {
+          sessionStorage.setItem('token', token)
+          sessionStorage.setItem('userId', userId)
           this.router.navigate(['/dashboard'])
         }
       },
@@ -55,5 +59,7 @@ export class LoginComponent implements OnInit {
       this.loading = false
     }, 5000)
   }
+
+
 
 }

@@ -31,8 +31,8 @@ export class RecoverPasswordComponent implements OnInit {
     if(this.recoverForm.status === 'VALID'){
       const data = this.recoverForm.value
       console.log("Data: " + data)
-      const userName = this.recoverForm.get('username')?.value
-      await this.dataService.updatePassword(userName, data).subscribe(res => {
+      const username = this.recoverForm.get('username')?.value
+      await this.dataService.updatePassword(username, data).subscribe(res => {
         console.log(res)
         this.loading = false
       })

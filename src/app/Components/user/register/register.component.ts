@@ -63,14 +63,14 @@ export class RegisterComponent implements OnInit {
       const name = this.registerForm.get('name')?.value
       const lastName = this.registerForm.get('surname')?.value
       const email = this.registerForm.get('email')?.value
-      const userName = this.registerForm.get('username')?.value
+      const username = this.registerForm.get('username')?.value
       const password = this.registerForm.get('password')?.value
       const idPais = this.registerForm.get('country')?.value
       const idCiudad = this.registerForm.get('city')?.value
-      const userData:User = new User (name, lastName, email, userName, password, idPais, idCiudad)
+      const userData:User = new User (name, lastName, email, username, password, idPais, idCiudad)
       this.dataService.createUser(userData).subscribe(res => {
         console.log(res)
-        this.toastr.success(`El usuario "${res.userName}" para ${res.name} ${res.lastName} ha sido creado con exito!`, 'Usuario Creado!')
+        this.toastr.success(`El usuario "${res.username}" para ${res.name} ${res.lastName} ha sido creado con exito!`, 'Usuario Creado!')
         this.router.navigate(['./'])
       })
     }

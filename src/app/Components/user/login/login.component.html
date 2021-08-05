@@ -6,9 +6,9 @@
           <h2 class="text-center title">Inicio de Sesión</h2>
           <form [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="mb-3">
-              <input type="text" formControlName="userName" class="form-control form-control-lg" placeholder="Nombre de Usuario">
+              <input type="text" formControlName="username" class="form-control form-control-lg" placeholder="Nombre de Usuario">
               <span class="text-danger"
-                *ngIf="loginForm.get('userName')?.hasError('required') && loginForm.get('userName')?.touched">
+                *ngIf="loginForm.get('username')?.hasError('required') && loginForm.get('username')?.touched">
                 Este campo es <strong>obligatorio!</strong>
               </span>
             </div>

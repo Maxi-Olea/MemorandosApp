@@ -5,13 +5,15 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ListMemorandosComponent } from './list-memorandos/list-memorandos.component';
+import { NewMemoComponent } from './new-memo/new-memo.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     NavbarComponent,
-    ListMemorandosComponent
+    ListMemorandosComponent,
+    NewMemoComponent
   ],
   imports: [
     CommonModule,

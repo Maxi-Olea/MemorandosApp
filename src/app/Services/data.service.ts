@@ -29,9 +29,14 @@ export class DataService {
     return this.httpClient.post('api/v1/login', userLogin)
   }
 
-  updatePassword(userName: string, userData: Object): Observable<Object> {
-    console.log(`api/v1/users/${userName.toLowerCase()}`)
-    return this.httpClient.patch(`api/v1/users/${userName.toLowerCase()}`, userData)
+  updatePassword(username: string, userData: Object): Observable<Object> {
+    console.log(`api/v1/users/${username.toLowerCase()}`)
+    return this.httpClient.patch(`api/v1/users/${username.toLowerCase()}`, userData)
+  }
+
+  getMemorandos(userId: number): Observable<any> {
+    console.log(`api/v1/memorandos/${userId}`)
+    return this.httpClient.get(`api/v1/memorandos/${userId}`)
   }
 
 }
