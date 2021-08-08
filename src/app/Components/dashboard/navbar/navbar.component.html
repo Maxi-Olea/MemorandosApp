@@ -1,6 +1,11 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-light bg-light">
   <div class="container">
     <a routerLink='/dashboard' class="navbar-brand title">Memorandos</a>
+    <div class="d-flex justify-content-center">
+      <button routerLink="/dashboard" type="button" class="btn btn-outline-secondary">Recibidos</button>
+      <button routerLink="/dashboard/sent" type="button" class="btn btn-outline-secondary">Enviados</button>
+      <button routerLink="/dashboard/newmemo" type="button" class="btn btn-outline-secondary">Nuevo</button>
+    </div>
+    <button (click)="logout()" style="margin-right: 10px;" class="btn btn-primary">Log Out</button>
   </div>
-  <button (click)="logout()" style="margin-right: 10px;" class="btn btn-primary">Log Out</button>
 </nav>

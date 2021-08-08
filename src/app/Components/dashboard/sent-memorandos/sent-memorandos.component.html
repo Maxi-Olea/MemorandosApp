@@ -1,0 +1,36 @@
+<!-- <div class="d-flex justify-content-center mt-3">
+    <button routerLink="/dashboard/newmemo" class="btn btn-dark btn-lg">Nuevo Memorando</button>
+  </div> -->
+  <div class="container mt-3">
+    <div class="row mt-3">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="card">
+          <div class="card-body text-center">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th style="width: 15%">Destinatario</th>
+                  <th style="width: 10%">Fecha</th>
+                  <th style="width: 60%">Mensaje</th>
+                  <th style="width: 15%">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let memo of memos">
+                  <td><span class="badge bg-black">{{ memo.destinatario }}</span></td>
+                  <td>{{ memo.fecha_hora.slice(0, 10) }}</td>
+                  <td>{{ memo.mensaje }}</td>
+                  <td>
+                    <i class="fas fa-reply"></i>
+                    <i class="fas fa-trash"></i>
+                    <i class="fas fa-share"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

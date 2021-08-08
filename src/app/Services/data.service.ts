@@ -39,4 +39,20 @@ export class DataService {
     return this.httpClient.get(`api/v1/memorandos/${userId}`)
   }
 
+  getSentMemos(userId: number): Observable<any> {
+    console.log(`api/v1/memorandos/sent/${userId}`)
+    return this.httpClient.get(`api/v1/memorandos/sent/${userId}`)
+  }
+
+  getUsers(): Observable<any> {
+    console.log('service de obtencion de usuarios')
+    return this.httpClient.get('api/v1/users')
+  }
+
+  sendMemo(memoData: any): Observable<any> {
+    console.log('Service de envio de memorando')
+    console.log(memoData)
+    return this.httpClient.post('api/v1/memorandos', memoData)
+  }
+
 }

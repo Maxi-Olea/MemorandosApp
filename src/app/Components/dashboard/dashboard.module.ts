@@ -6,6 +6,8 @@ import { DashboardComponent } from './dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ListMemorandosComponent } from './list-memorandos/list-memorandos.component';
 import { NewMemoComponent } from './new-memo/new-memo.component';
+import { SentMemorandosComponent } from './sent-memorandos/sent-memorandos.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -13,11 +15,13 @@ import { NewMemoComponent } from './new-memo/new-memo.component';
     DashboardComponent,
     NavbarComponent,
     ListMemorandosComponent,
-    NewMemoComponent
+    NewMemoComponent,
+    SentMemorandosComponent
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    SharedModule
   ]
 })
 export class DashboardModule { }
