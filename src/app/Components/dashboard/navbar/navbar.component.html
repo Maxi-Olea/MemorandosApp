@@ -1,18 +1,18 @@
 <nav class="navbar navbar-dark bg-dark">
   <div class="container">
     <a routerLink='/dashboard' class="navbar-brand title">Memorandos</a>
-    <div class="d-flex justify-content-center">
-      <button routerLink="/dashboard" type="button" class="btn btn-outline-primary">Recibidos</button>
-      <button routerLink="/dashboard/sent" type="button" class="btn btn-outline-primary">Enviados</button>
-      <button routerLink="/dashboard/newmemo" type="button" class="btn btn-outline-primary">Nuevo</button>
+    <div class="d-flex justify-content-space-between">
+      <button routerLink="/dashboard" type="button" class="btn btn-dark btn-lg title">Recibidos</button>
+      <button routerLink="/dashboard/sent" type="button" class="btn btn-dark btn-lg title">Enviados</button>
+      <button routerLink="/dashboard/newmemo" type="button" class="btn btn-dark btn-lg title">Nuevo</button>
     </div>
     <div *ngIf="loading">
       <app-spinner></app-spinner>
     </div>
     <div *ngIf="!loading" class="card">
       <div class="card-body">
-        <i class="fas fa-user card-title"> {{ userData.name }} {{ userData.lastName }}</i>
-        <button (click)="logout()"  class="btn btn-primary">Log Out</button>
+        <i class="fas fa-user"><span class="title"> {{ userData.name }} {{ userData.lastName }}</span></i>
+        <button (click)="logout()"  class="btn btn-primary btn-sm">Cerrar Sesion</button>
       </div>
     </div>
   </div>
