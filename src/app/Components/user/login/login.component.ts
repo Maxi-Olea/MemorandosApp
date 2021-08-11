@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   loading = false;
 
   constructor(private fb: FormBuilder,
-              private dataservice: DataService,
+              private dataService: DataService,
               private toastr: ToastrService,
               private router: Router) {
     this.loginForm = this.fb.group ({
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.status === 'VALID') {
       const userLogin = this.loginForm.value
       console.log(userLogin)
-      this.dataservice.login(userLogin).subscribe(res => {
+      this.dataService.login(userLogin).subscribe(res => {
         console.log(res)
         const token = res.token
         const userId = res.id
