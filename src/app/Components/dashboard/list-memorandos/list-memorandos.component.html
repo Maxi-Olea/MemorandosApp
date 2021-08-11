@@ -1,6 +1,3 @@
-<!-- <div class="d-flex justify-content-center mt-3">
-  <button routerLink="/dashboard/newmemo" class="btn btn-dark btn-lg">Nuevo Memorando</button>
-</div> -->
 <div class="container">
   <div class="row mt-3">
     <div class="col-lg-8 offset-lg-2">
@@ -11,8 +8,8 @@
               <tr>
                 <th style="width: 15%">Remitente</th>
                 <th style="width: 10%">Fecha</th>
-                <th style="width: 60%">Mensaje</th>
-                <th style="width: 15%">Acciones</th>
+                <th style="width: 65%">Mensaje</th>
+                <th style="width: 10%">Eliminar</th>
               </tr>
             </thead>
             <tbody>
@@ -21,9 +18,7 @@
                 <td>{{ memorando.fecha_hora.slice(0, 10) }}</td>
                 <td>{{ memorando.mensaje }}</td>
                 <td>
-                  <i class="fas fa-reply"></i>
-                  <i class="fas fa-trash"></i>
-                  <i class="fas fa-share"></i>
+                  <i (click)="deleteMemo(memorando.id)" class="fas fa-trash"></i>
                 </td>
               </tr>
             </tbody>

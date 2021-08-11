@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DataService } from 'src/app/Services/data.service';
 
@@ -20,7 +19,6 @@ export class NewMemoComponent implements OnInit {
     private fb: FormBuilder,
     private dataService: DataService,
     private toastr: ToastrService,
-    private router: Router
   ) {
     this.newMemoForm =this.fb.group({
       userId: ['null', [Validators.required]],
@@ -47,6 +45,15 @@ export class NewMemoComponent implements OnInit {
     }
     this.dataService.sendMemo(memoData).subscribe(res => {
       console.log('Data recibida: ', res)
+      this.toastr.success('El mensaje se ha enviado con Exito')
+      this.newMemoForm.reset()
+      this.loading = false
+    },
+    e => {
+      console.log(e)
+      const error = e.error
+      console.log("Error: ", error.message)
+      this.toastr.error('Se ha producido un error. Por favor intente nuevamente')
     })
   }
 

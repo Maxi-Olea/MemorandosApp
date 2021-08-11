@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { DataService } from 'src/app/Services/data.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class SentMemorandosComponent implements OnInit {
   memos: any;
 
   constructor(
-    private dataService: DataService
+    private dataService: DataService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {

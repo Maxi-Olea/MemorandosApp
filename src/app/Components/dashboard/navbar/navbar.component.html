@@ -1,11 +1,19 @@
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-dark bg-dark">
   <div class="container">
     <a routerLink='/dashboard' class="navbar-brand title">Memorandos</a>
     <div class="d-flex justify-content-center">
-      <button routerLink="/dashboard" type="button" class="btn btn-outline-secondary">Recibidos</button>
-      <button routerLink="/dashboard/sent" type="button" class="btn btn-outline-secondary">Enviados</button>
-      <button routerLink="/dashboard/newmemo" type="button" class="btn btn-outline-secondary">Nuevo</button>
+      <button routerLink="/dashboard" type="button" class="btn btn-outline-primary">Recibidos</button>
+      <button routerLink="/dashboard/sent" type="button" class="btn btn-outline-primary">Enviados</button>
+      <button routerLink="/dashboard/newmemo" type="button" class="btn btn-outline-primary">Nuevo</button>
     </div>
-    <button (click)="logout()" style="margin-right: 10px;" class="btn btn-primary">Log Out</button>
+    <div *ngIf="loading">
+      <app-spinner></app-spinner>
+    </div>
+    <div *ngIf="!loading" class="card">
+      <div class="card-body">
+        <i class="fas fa-user card-title"> {{ userData.name }} {{ userData.lastName }}</i>
+        <button (click)="logout()"  class="btn btn-primary">Log Out</button>
+      </div>
+    </div>
   </div>
 </nav>

@@ -42,7 +42,6 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getcountries().subscribe(data => {
       this.countries = data
-      this.toastr.success('Hello world!', 'Toastr fun!')
     })
   }
 
