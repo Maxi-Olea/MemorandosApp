@@ -9,11 +9,9 @@
     <div *ngIf="loading">
       <app-spinner></app-spinner>
     </div>
-    <div *ngIf="!loading" class="card">
-      <div class="card-body">
-        <i class="fas fa-user"><span class="title"> {{ userData.name }} {{ userData.lastName }}</span></i>
-        <button (click)="logout()"  class="btn btn-primary btn-sm">Cerrar Sesion</button>
-      </div>
+    <div id="user" *ngIf="!loading">
+      <i class="fas fa-user"><span class="title"> {{ userData.name }} {{ userData.lastName }}</span></i>
+      <button (click)="logout()"  class="btn btn-primary btn-sm">Cerrar Sesion</button>
     </div>
   </div>
 </nav>

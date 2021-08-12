@@ -2,12 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { FooterComponent } from './footer/footer.component';
+import { NoNavbarComponent } from './no-navbar/no-navbar.component';
 
 
 
 @NgModule({
   declarations: [
-    SpinnerComponent
+    SpinnerComponent,
+    FooterComponent,
+    NoNavbarComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +21,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
   exports: [
     FormsModule,
     ReactiveFormsModule,
-    SpinnerComponent
+    SpinnerComponent,
+    FooterComponent,
+    NoNavbarComponent
   ]
 })
 export class SharedModule { }
