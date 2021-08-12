@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { DataService } from 'src/app/Services/data.service';
 
 
@@ -13,7 +15,12 @@ export class RecoverPasswordComponent implements OnInit {
   recoverForm: FormGroup;
   loading = false;
 
-  constructor(private fb: FormBuilder, private dataService: DataService) {
+  constructor(
+    private fb: FormBuilder,
+    private dataService: DataService,
+    private toastr: ToastrService,
+    private router: Router
+    ) {
     this.recoverForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       username: ['', [Validators.required]],
@@ -35,15 +42,21 @@ export class RecoverPasswordComponent implements OnInit {
       await this.dataService.updatePassword(username, data).subscribe(res => {
         console.log(res)
         this.loading = false
+        this.toastr.success('La contraseña a sido restablecida con exito', 'Contraseña Restablecida')
+        this.router.navigate(['/login'])
+      },
+      e => {
+        console.log(e)
+        const error = e.error
+        console.log("Error: ", error.message)
+        this.toastr.error('Ha ocurrido un problema con el cambio de contraseña', 'Fallo en el cambio de Contraseña!')
+        this.loading = false
       })
     } else {
+      this.toastr.error('El formulario no es valido', 'Fallo en el cambio de Contraseña!')
       console.log("Formulario invalido")
     }
 
-
-    // setTimeout(()=>{
-    //   this.loading = false
-    // }, 5000)
   }
 
   checkPassword(group: FormGroup): any {

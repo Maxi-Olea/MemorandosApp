@@ -14,11 +14,6 @@ export class DataService {
 
   }
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json',
-    'Authorization': `Bearer ${this.token}` })
-  };
-
   getToken() {
     return sessionStorage.getItem('token');
   }

@@ -11,6 +11,7 @@ export class ListMemorandosComponent implements OnInit {
 
   userId: any;
   memorandos: any;
+  loading= false;
 
   constructor(
     private dataService: DataService,
@@ -18,6 +19,7 @@ export class ListMemorandosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loading = true
     this.userId = sessionStorage.getItem('userId')
     this.getMemorandos()
 
@@ -27,6 +29,7 @@ export class ListMemorandosComponent implements OnInit {
     this.dataService.getMemorandos(this.userId).subscribe(data => {
       console.log('data recibida: ', data)
       this.memorandos = data
+      this.loading = false
     },
     e => {
       console.log(e)

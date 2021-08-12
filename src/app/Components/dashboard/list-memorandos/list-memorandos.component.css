@@ -7,3 +7,10 @@
   font-size: 15px;
   margin: 0px 5px;
 }
+
+.sk-chase {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  animation: sk-chase 2.5s infinite linear both;
+}

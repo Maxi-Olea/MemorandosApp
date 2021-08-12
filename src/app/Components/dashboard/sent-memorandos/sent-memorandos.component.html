@@ -3,7 +3,10 @@
       <div class="col-lg-8 offset-lg-2">
         <div class="card">
           <div class="card-body text-center">
-            <table class="table">
+            <div *ngIf="loading" class="d-flex justify-content-center mt-3">
+              <app-spinner></app-spinner>
+            </div>
+            <table *ngIf="!loading" class="table">
               <thead>
                 <tr>
                   <th style="width: 15%">Destinatario</th>

@@ -15,9 +15,6 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup
   loading = false
 
-  //Arreglos para pruebas
-  //countries = ['Argentina','Uruguay','Brasil','Chile','Bolivia','Paraguay','Colombia','Venezuela']
-  //cities = ['Cordoba','Capital Federal','Santa Fe','Rosario','Mendoza','Neuquen']
   countries:any[] = []
   cities:any[] = []
 
@@ -71,14 +68,19 @@ export class RegisterComponent implements OnInit {
         console.log(res)
         this.toastr.success(`El usuario "${res.username}" para ${res.name} ${res.lastName} ha sido creado con exito!`, 'Usuario Creado!')
         this.router.navigate(['./'])
+      },
+      e => {
+        console.log(e)
+        const error = e.error
+        console.log("Error: ", error.message)
+        this.toastr.error('Ha ocurrido un problema con el registro del usuario', 'Fallo en el Registro!')
+        this.loading = false
       })
     }
     else {
       console.log("Formulario invalido")
+      this.toastr.error('Lod datos ingresados no son validos', 'Fallo en el Registro!')
     }
-    setTimeout(() => {
-      this.loading = false
-    }, 3000)
   }
 
   checkPassword(group: FormGroup): any {
