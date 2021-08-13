@@ -51,11 +51,11 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.loading = true
-    console.log(this.registerForm)
+    //console.log(this.registerForm)
     if(this.registerForm.status === 'VALID') {
       const user = this.registerForm.value
-      console.log(user)
-      console.log("Nombre:" + this.registerForm.get('name')?.value)
+      //console.log(user)
+      //console.log("Nombre:" + this.registerForm.get('name')?.value)
       const name = this.registerForm.get('name')?.value
       const lastName = this.registerForm.get('surname')?.value
       const email = this.registerForm.get('email')?.value
@@ -78,7 +78,7 @@ export class RegisterComponent implements OnInit {
       })
     }
     else {
-      console.log("Formulario invalido")
+      //console.log("Formulario invalido")
       this.toastr.error('Lod datos ingresados no son validos', 'Fallo en el Registro!')
     }
   }

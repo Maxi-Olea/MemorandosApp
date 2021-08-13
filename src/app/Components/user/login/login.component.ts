@@ -28,20 +28,21 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.loginForm)
+    //console.log(this.loginForm)
     this.loading = true
     if(this.loginForm.status === 'VALID') {
       const userLogin = this.loginForm.value
-      console.log(userLogin)
+      //console.log(userLogin)
       this.dataService.login(userLogin).subscribe(res => {
-        console.log(res)
+        //console.log(res)
         const token = res.token
         const userId = res.id
-        console.log("Imprmiendo el token: ", token)
-        console.log("Imprimiendo el userId: ", userId)
+        //console.log("Imprmiendo el token: ", token)
+        //console.log("Imprimiendo el userId: ", userId)
         if(token) {
           sessionStorage.setItem('token', token)
           sessionStorage.setItem('userId', userId)
+          this.loading = false
           this.router.navigate(['/dashboard'])
         }
       },
@@ -50,14 +51,13 @@ export class LoginComponent implements OnInit {
         const error = e.error
         console.log("Error: ", error.message)
         this.toastr.error('El usuario y/o la contraseña ingresados no son válidos', 'Fallo en la Autenticación!')
+        this.loading = false
       })
     }
     else {
       console.log("Datos no Validos")
     }
-    setTimeout(()=> {
-      this.loading = false
-    }, 5000)
+    
   }
 
 

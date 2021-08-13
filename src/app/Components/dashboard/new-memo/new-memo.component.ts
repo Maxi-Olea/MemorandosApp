@@ -29,22 +29,22 @@ export class NewMemoComponent implements OnInit {
   ngOnInit(): void {
     this.userId = sessionStorage.getItem('userId')
     this.dataService.getUsers().subscribe(data => {
-      console.log("data recibida desde la base de datos: ", data)
+      //console.log("data recibida desde la base de datos: ", data)
       this.users = data.filter( ( x:any ) => { return x.id != this.userId})
-      console.log('usuarios filtrados: ', this.users)
+      //console.log('usuarios filtrados: ', this.users)
     })
   }
 
   newMemo() {
     this.loading = true
-    console.log('el formulario: ', this.newMemoForm)
+    //console.log('el formulario: ', this.newMemoForm)
     const memoData = {
       message: this.newMemoForm.get('memo')?.value,
       remitente: this.userId,
       destinatario: this.newMemoForm.get('userId')?.value
     }
     this.dataService.sendMemo(memoData).subscribe(res => {
-      console.log('Data recibida: ', res)
+      //console.log('Data recibida: ', res)
       this.toastr.success('El mensaje se ha enviado con Exito')
       this.newMemoForm.reset()
       this.loading = false

@@ -27,7 +27,7 @@ export class ListMemorandosComponent implements OnInit {
 
   getMemorandos() {
     this.dataService.getMemorandos(this.userId).subscribe(data => {
-      console.log('data recibida: ', data)
+      //console.log('data recibida: ', data)
       this.memorandos = data
       this.loading = false
     },
@@ -40,9 +40,9 @@ export class ListMemorandosComponent implements OnInit {
   }
 
   deleteMemo(idMemo: any) {
-    console.log('Eliminar el memorando id: ', idMemo)
+    //console.log('Eliminar el memorando id: ', idMemo)
     this.dataService.deleteMemo(idMemo).subscribe(res => {
-      console.log('respuesta de la api: ', res)
+      //console.log('respuesta de la api: ', res)
       if(res === 1) {
         this.toastr.success('Mensaje eliminado')
         this.getMemorandos()

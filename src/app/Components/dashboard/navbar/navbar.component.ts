@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
 
   getUserInfo() {
     this.dataService.getUserById(this.userId).subscribe(data => {
-      console.log('Data del usuario recibida: ', data)
+      //console.log('Data del usuario recibida: ', data)
       this.userData = data
       this.loading = false
     })

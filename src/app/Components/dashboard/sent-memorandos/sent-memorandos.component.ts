@@ -21,13 +21,13 @@ export class SentMemorandosComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true
     this.userId = sessionStorage.getItem('userId')
-    console.log('El userId recuperado del session storage: ', this.userId)
+    //console.log('El userId recuperado del session storage: ', this.userId)
     this.getSentMemos()
   }
 
   getSentMemos() {
     this.dataService.getSentMemos(this.userId).subscribe(data => {
-      console.log('data recibida: ', data)
+      //console.log('data recibida: ', data)
       this.memos = data
       this.loading = false
     },

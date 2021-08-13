@@ -34,13 +34,13 @@ export class RecoverPasswordComponent implements OnInit {
 
   resetPassword = async () => {
     this.loading = true
-    console.log(this.recoverForm)
+    //console.log(this.recoverForm)
     if(this.recoverForm.status === 'VALID'){
       const data = this.recoverForm.value
-      console.log("Data: " + data)
+      //console.log("Data: " + data)
       const username = this.recoverForm.get('username')?.value
       await this.dataService.updatePassword(username, data).subscribe(res => {
-        console.log(res)
+        //console.log(res)
         this.loading = false
         this.toastr.success('La contraseña a sido restablecida con exito', 'Contraseña Restablecida')
         this.router.navigate(['/login'])
@@ -54,7 +54,7 @@ export class RecoverPasswordComponent implements OnInit {
       })
     } else {
       this.toastr.error('El formulario no es valido', 'Fallo en el cambio de Contraseña!')
-      console.log("Formulario invalido")
+      //console.log("Formulario invalido")
     }
 
   }
